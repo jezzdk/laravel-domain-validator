@@ -4,7 +4,7 @@ namespace Jezzdk\Laravel\Validator;
 
 use Illuminate\Contracts\Validation\Rule;
 
-class DomainActive implements Rule
+class DomainActive extends Domain implements Rule
 {
     /**
      * Determine if the validation rule passes.
@@ -15,7 +15,7 @@ class DomainActive implements Rule
      */
     public function passes($attribute, $value)
     {
-        return strtoupper($value) === $value;
+        return parent::passes($attribute, $value) && $this->domainIsActive($value);
     }
 
     /**
@@ -26,5 +26,16 @@ class DomainActive implements Rule
     public function message()
     {
         return 'The :attribute is not an active domain.';
+    }
+
+    /**
+     * Test if the domain name resolves to an IP address.
+     *
+     * @param string $value
+     * @return bool
+     */
+    protected function domainIsActive(string $value)
+    {
+        return checkdnsrr($value,'A') !== false;
     }
 }
