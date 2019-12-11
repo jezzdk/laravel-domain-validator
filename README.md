@@ -3,7 +3,7 @@ Laravel Domain Validator
 
 A simple domain validator for Laravel 6.7 and above.
 
-##Usage
+## Usage
 
 ```
 use Jezzdk\Laravel\Validator\Domain;
