@@ -1,14 +1,19 @@
 Laravel Domain Validator
 =================
 
-A simple domain validator.
+A simple domain validator for Laravel 6.7 and above.
 
-`domain`
-========
+##Usage
 
-Validates the domain name format.
+```
+use Jezzdk\Laravel\Validator\Domain;
+use Jezzdk\Laravel\Validator\DomainActive;
 
-`domain_active`
-========
+$request->validate([
+    'domain' => ['required', 'string', new Domain],
+]);
 
-Also checks if the domain name resolves to one or more IP addresses. 
+$request->validate([
+    'domain' => ['required', 'string', new DomainActive],
+]);
+```
