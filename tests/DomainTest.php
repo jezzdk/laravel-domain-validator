@@ -1,13 +1,14 @@
 <?php
 
 use Jezzdk\Laravel\Validator\Domain;
+use PHPUnit\Framework\TestCase;
 
-class DomainTest extends \PHPUnit_Framework_TestCase
+class DomainTest extends TestCase
 {
     /** @var Domain */
     private $validator;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->validator = new Domain();
     }
